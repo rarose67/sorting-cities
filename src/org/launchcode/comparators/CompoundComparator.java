@@ -21,11 +21,18 @@ public class CompoundComparator implements Comparator<City> {
     @Override
     public int compare(City o1, City o2) {
 
-        Comparator<City> cityComparator;
-        int index = 0;
+        int result =0;
 
+        for (int i=0; i < comparators.size(); i++)
+        {
+            result = comparators.get(i).compare(o1, o2);
 
+            if (result != 0)
+            {
+                return result;
+            }
+        }
+
+        return result;
     }
-
-
 }
